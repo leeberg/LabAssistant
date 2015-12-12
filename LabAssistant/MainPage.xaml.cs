@@ -61,17 +61,22 @@ namespace LabAssistant
 
             // RunActions
 
-            Debug.WriteLine(ActionListBox.SelectedIndex.ToString());
+            Debug.WriteLine(ActionListBoxLocal.SelectedIndex.ToString());
             // 0 = EX 1
             // 1 = EX 2 
             // 2 = EX 3
 
-            Debug.WriteLine(LabistBox.SelectedIndex.ToString());
-            Action = LabistBox.SelectedIndex.ToString();
+            Debug.WriteLine(LabPivot.SelectedIndex.ToString());
+            Action = LabPivot.SelectedIndex.ToString();
+
+            Windows.UI.Popups.MessageDialog messageDialog =
+             new Windows.UI.Popups.MessageDialog("Thank you for choosing banana.");
+            //await messageDialog.ShowAsync();
+
 
             if (Action == "1")
             {
-                WebHook();
+                //WebHook();
             }
     
             // 0 = LOCAL

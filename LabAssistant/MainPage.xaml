@@ -5,31 +5,65 @@
     xmlns:local="using:LabAssistant"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="438.224" Height="517.26">
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    mc:Ignorable="d" >
+  
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10,5,10,0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-45.6,152.4">
-        <StackPanel HorizontalAlignment="CENTER" Height="392" Margin="10,10,90,-12" VerticalAlignment="Top" Width="372">
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Lab Assistant" FontSize="18.667"/>
+     <Viewbox StretchDirection="Both" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" >
+                <Border BorderBrush="Gray" BorderThickness="10">
 
-            <ListBox x:Name="ActionListBox">
-                <TextBlock Text="Experiment 1" FontFamily="Arial"/>
-                <TextBlock Text="Experiment 2" FontFamily="Arial"/>
-                <TextBlock Text="Experiment 3" FontFamily="Arial"/>
-            </ListBox>
+                <StackPanel Margin="10,0" HorizontalAlignment="Center">
+                    <TextBlock x:Name="textBlock" Text="Lab Assistant" FontSize="18.667"/>
+                    <HyperlinkButton Content="www.j2thecloud.com" NavigateUri="http://www.microsoft.com"/>
 
-            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text=" "/>
+                    <Pivot Name="LabPivot">
+                        <PivotItem Header="LOCAL">
 
-            <ListBox x:Name="LabistBox">
-                <TextBlock Text="Local Lab" FontFamily="Arial"/>
-                <TextBlock Text="Cloud Lab" FontFamily="Arial"/>
+                            <ListView x:Name="ActionListBoxLocal" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single" Width="300" HorizontalAlignment="Left">
+                                <TextBlock Text="Deploy Nano Server" FontFamily="Arial"/>
+                                <TextBlock Text="Deploy IIS Servers" FontFamily="Arial"/>
+                                <TextBlock Text="Delete Nano Server" FontFamily="Arial"/>
+                            </ListView>
+                     
 
-            </ListBox>
+                        </PivotItem>
+                        <PivotItem Header="CLOUD">
 
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
+                            <ListView x:Name="ActionListBoxCloud" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single">
+                                <TextBlock Text="Deploy DNS" FontFamily="Arial"/>
+                                <TextBlock Text="OMS LAB Deployment" FontFamily="Arial"/>
+                                <TextBlock Text="CLOUD Linux Test 123" FontFamily="Arial"/>
+                            </ListView>
+                        </PivotItem>
 
-            <Button x:Name="button" Content="Run Experiment" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click"/>
+                    </Pivot>
 
-        </StackPanel>
+
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
+
+                    <Button x:Name="button" Click="button_Click"  >
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <Image Source="Assets/appbar.rocket.png" Stretch="Uniform"/>
+                            <TextBlock Text="Run Experiment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+
+
+                    <ProgressRing IsActive="True" />
+
+                </StackPanel>
+
+            </Border>
+            </Viewbox>
+
+        
 
     </Grid>
 </Page>
