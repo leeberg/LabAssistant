@@ -5,12 +5,12 @@
     xmlns:local="using:LabAssistant"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="438.224" Height="534.33">
+    mc:Ignorable="d" Width="438.224" Height="517.26">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel HorizontalAlignment="CENTER" Height="369" Margin="10,112,0,0" VerticalAlignment="Top" Width="350">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-45.6,152.4">
+        <StackPanel HorizontalAlignment="CENTER" Height="392" Margin="10,10,90,-12" VerticalAlignment="Top" Width="372">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Lab Assistant" FontSize="18.667"/>
-            
+
             <ListBox x:Name="ActionListBox">
                 <TextBlock Text="Experiment 1" FontFamily="Arial"/>
                 <TextBlock Text="Experiment 2" FontFamily="Arial"/>
@@ -18,11 +18,11 @@
             </ListBox>
 
             <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text=" "/>
-            
+
             <ListBox x:Name="LabistBox">
                 <TextBlock Text="Local Lab" FontFamily="Arial"/>
                 <TextBlock Text="Cloud Lab" FontFamily="Arial"/>
-                
+
             </ListBox>
 
             <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
