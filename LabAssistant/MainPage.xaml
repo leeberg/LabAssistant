@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="LabAssistant.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LabAssistant"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="438.224" Height="534.33">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="CENTER" Height="369" Margin="10,112,0,0" VerticalAlignment="Top" Width="350">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Lab Assistant" FontSize="18.667"/>
+            
+            <ListBox x:Name="ActionListBox">
+                <TextBlock Text="Experiment 1" FontFamily="Arial"/>
+                <TextBlock Text="Experiment 2" FontFamily="Arial"/>
+                <TextBlock Text="Experiment 3" FontFamily="Arial"/>
+            </ListBox>
+
+            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text=" "/>
+            
+            <ListBox x:Name="LabistBox">
+                <TextBlock Text="Local Lab" FontFamily="Arial"/>
+                <TextBlock Text="Cloud Lab" FontFamily="Arial"/>
+                
+            </ListBox>
+
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
+
+            <Button x:Name="button" Content="Run Experiment" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+</Page>
