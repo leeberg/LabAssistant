@@ -103,7 +103,7 @@ namespace LabAssistant
                 // response = await client.PostAsJsonAsync("https://s1events.azure-automation.net/webhooks?token=NuX9bfyiWzKM45UAoXp1WQ7mW2PPoDkaMUtxQlL%2f7ps%3d", "");
                 //https://s1events.azure-automation.net/webhooks?token=pORbQ527NLVkze%2bf2Kyt%2bNI68%2bz8aiELViZyWp63Cec%3d
 
-                response = await client.PostAsJsonAsync("webhooks?token=pORbQ527NLVkze%2bf2Kyt%2bNI68%2bz8aiELViZyWp63Cec%3d", "");
+                response = await client.PostAsJsonAsync("webhooks=?tokenshere :)", "");
                 if (response.IsSuccessStatusCode)
                 {
 
