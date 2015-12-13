@@ -48,15 +48,12 @@
                     <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
 
                     <Button x:Name="button" Click="button_Click"  >
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <Image Source="Assets/appbar.rocket.png" Stretch="Uniform"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Assets/appbar.rocket.png" Stretch="Uniform" Height="52" Width="52"/>
                             <TextBlock Text="Run Experiment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-
-
-
-                    <ProgressRing IsActive="True" />
+                    <ProgressRing IsActive="False" x:Name="ExperimentInProgressRing" Height="19" Width="31"/>
 
                 </StackPanel>
 
