@@ -1,3 +1,3 @@
-Local 1, 23fk0-fkf
-Local 2, 23fk0-fkf
-Local 3, 23fk0-fkf
+ExpName1=Local 1; Webhook1=23fk0-fkf;
+ExpName2=Local 2; Webhook2=23fk0-fkf;
+ExpName3=Local 3; Webhook3=23fk0-fkf;
