@@ -42,7 +42,7 @@
                                 <TextBlock Name="Spacer0" />
                                 
                                 <TextBlock Name="TextBlockDescription" Text="Description" FontWeight="Bold"  />
-                                <TextBlock Name="TextBoxDescription" />
+                                <TextBlock Name="TextBoxDescription"/>
                                 
                                 <TextBlock Name="Spacer1" />
                                 
