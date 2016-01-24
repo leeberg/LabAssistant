@@ -9,54 +9,118 @@
     xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
     mc:Ignorable="d" >
   
-    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10,5,10,0" Loaded="LayoutRoot_Loaded">
-    <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0" Loaded="LayoutRoot_Loaded">
 
-     <Viewbox StretchDirection="Both" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" >
-                <Border BorderBrush="Gray" BorderThickness="10">
-
-                <StackPanel Margin="10,0" HorizontalAlignment="Center">
-                    <TextBlock x:Name="textBlock" Text="Lab Assistant" FontSize="18.667"/>
-                    <HyperlinkButton Content="www.j2thecloud.com" NavigateUri="http://www.microsoft.com"/>
-
-                    <Pivot Name="LabPivot">
-                        <PivotItem Header="LOCAL">
-
-                            <ListView x:Name="ActionListBoxLocal" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single" Width="300" HorizontalAlignment="Left">
-                          
-                            </ListView>
-                     
-
-                        </PivotItem>
-                        <PivotItem Header="CLOUD">
-
-                            <ListView x:Name="ActionListBoxCloud" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single">
-                                
-                            </ListView>
-                        </PivotItem>
-
-                    </Pivot>
-
-
-                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text=" "/>
-
-                    <Button x:Name="button" Click="button_Click"  >
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/appbar.rocket.png" Stretch="Uniform" Height="52" Width="52"/>
-                            <TextBlock Text="Run Experiment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <ProgressRing IsActive="False" x:Name="ExperimentInProgressRing" Height="19" Width="31"/>
-
-                </StackPanel>
-
-            </Border>
-            </Viewbox>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Name="ScrollViewer1" VerticalScrollBarVisibility="Auto" Margin="5">
+
+            <StackPanel HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+            
+                <Pivot Name="LabPivot" Grid.Row="0" RequestedTheme="Light" >
+                
+                    <PivotItem Header="Runbook">
+                        <StackPanel>
+                            <TextBlock Name="textBlockTabDataRunbooks" Text="Select a Runbook" FontSize="18.667" FontWeight="Bold"/>
+                            <ListView Name="ActionListBoxRunbook" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single" Width="300" HorizontalAlignment="Left" ScrollViewer.IsVerticalRailEnabled="True" SelectionChanged="ActionListBoxRunbook_SelectionChanged" />
+                        </StackPanel>
+                    </PivotItem>
+
+                    <PivotItem Header="Settings">
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <StackPanel>
+                                <TextBlock Name="textBlockTabDataSettings" Text="View / Specify Runbook Settings" FontSize="18.667" FontWeight="Bold"/>
+                                <TextBlock Name="Spacer0" />
+                                
+                                <TextBlock Name="TextBlockDescription" Text="Description" FontWeight="Bold"  />
+                                <TextBlock Name="TextBoxDescription" />
+                                
+                                <TextBlock Name="Spacer1" />
+                                
+                                <TextBlock Name="TextBlockWebHookUrl" Text="WebHook URL" FontWeight="Bold"  />
+                                <TextBlock Name="TextBoxWebHookUrl" />
+                                
+                                <TextBlock Name="Spacer2" />
+                                
+                                <TextBlock Name="TextBlockWebHookInput1" Text="Input1" Visibility="Collapsed"  />
+                                <TextBox Name="TextBoxWebHookInput1" Visibility="Collapsed" />
+
+                                <TextBlock Name="TextBlockWebHookInput2" Text="Input2" Visibility="Collapsed"  />
+                                <TextBox Name="TextBoxWebHookInput2" Visibility="Collapsed"   />
+
+                                <TextBlock Name="TextBlockWebHookInput3" Text="Input3" Visibility="Collapsed"  />
+                                <TextBox Name="TextBoxWebHookInput3" Visibility="Collapsed"  />
+                            </StackPanel>
+                        </Grid>
+                    </PivotItem>
+
+                    <PivotItem Header="Execute">
+                        <Grid Grid.Row="0" >
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <StackPanel Grid.Row="0"  Margin="5,0,0,0"  Grid.Column="0">
+                                <TextBlock Name="textBlockTabexecute" Text="Start Experiment" FontSize="18.667" FontWeight="Bold"/>
+                                <TextBlock Name="Spacer3" />
+                                <Button x:Name="button" Click="button_Click" >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Image Source="Assets/appbar.rocket.png" Stretch="Uniform" Height="52" Width="52"/>
+                                        <TextBlock Text="Run Experiment" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+
+
+                            <Image Name="IMGRunbookOK" Source="Assets/appbar.check.png" Stretch="Uniform" Height="52" Width="52" Visibility="Visible" Grid.Column="1"/>
+                            <Image Name="IMGRunbookFAIL" Source="Assets/appbar.warning.png" Stretch="Uniform" Height="52" Width="52" Visibility="Collapsed"/>
+                            <ProgressRing IsActive="False" x:Name="ExperimentInProgressRing" Height="19" Width="31" Visibility="Collapsed"/>
+
+                           
+
+
+
+                        </Grid>
+                    </PivotItem>
+
+
+                    <PivotItem Header="About">
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <StackPanel>
+                            <TextBlock Name="textBlockAppName" Text="Lab Assistant" FontSize="18.667" FontWeight="Bold"/>
+                            <TextBlock Name="textBlockCredits" Text="Lee Berg" />
+                            <HyperlinkButton Content="Github" NavigateUri="https://github.com/bergotronic/LabAssistant"/>
+                                
+                            <HyperlinkButton Content="www.j2thecloud.com" NavigateUri="http://www.microsoft.com"/>
+                            
+                            </StackPanel>
+                            <Image Source="Assets/laboratory.png" Height="100" Width="100"  />
+                        </Grid>
+                    </PivotItem>
+
+            </Pivot>
+
+          
+
+            </StackPanel>
+        </ScrollViewer>
+        
+       
+
+
 
     </Grid>
 </Page>
