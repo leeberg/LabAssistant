@@ -59,7 +59,10 @@ namespace LabAssistant
             // RunActions
             ExperimentInProgressRing.IsActive = true;
             // WHICH HEADER DID THEY PICK!
-          
+
+            Load_Experiments();
+
+
             string PivotHeaderIndex = LabPivot.SelectedIndex.ToString();
 
             if (PivotHeaderIndex == "0")
@@ -143,5 +146,51 @@ namespace LabAssistant
         }
 
 
+
+        private async void Load_Experiments()
+        {
+            try
+            {   // Open the text file using a stream reader.
+
+                StringBuilder outputText = new StringBuilder();
+
+                var webRequest = WebRequest.Create(@"https://onedrive.live.com/redir?resid=67cbed2f7b43bc24!24480&authkey=!AEZuhp_6Bmuyhbk&ithint=file%2ctxt");
+
+                //using (var response = webRequest.GetResponse())
+                using (var content = response.Content) ;
+                Debug.WriteLine(Content.ToString());
+               
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("The file could not be read:");
+                Debug.WriteLine(e.Message);
+            }
+
+        }
+
+
+
+        private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
+        
+
+
+
+            ActionListBoxLocal.Items.Add("Experiement1");
+            ActionListBoxLocal.Items.Add("Experiement2");
+            ActionListBoxLocal.Items.Add("Experiement3");
+
+
+            ActionListBoxCloud.Items.Add("Experiement1");
+            ActionListBoxCloud.Items.Add("Experiement2");
+            ActionListBoxCloud.Items.Add("Experiement3");
+
+
+        }
     }
 }

@@ -9,7 +9,7 @@
     xmlns:Primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
     mc:Ignorable="d" >
   
-    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10,5,10,0">
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10,5,10,0" Loaded="LayoutRoot_Loaded">
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
@@ -26,9 +26,7 @@
                         <PivotItem Header="LOCAL">
 
                             <ListView x:Name="ActionListBoxLocal" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single" Width="300" HorizontalAlignment="Left">
-                                <TextBlock Text="Deploy Nano Server" FontFamily="Arial"/>
-                                <TextBlock Text="Deploy IIS Servers" FontFamily="Arial"/>
-                                <TextBlock Text="Delete Nano Server" FontFamily="Arial"/>
+                          
                             </ListView>
                      
 
@@ -36,9 +34,7 @@
                         <PivotItem Header="CLOUD">
 
                             <ListView x:Name="ActionListBoxCloud" IsItemClickEnabled="True" IsSwipeEnabled="True" CanDragItems="False" SelectionMode="Single">
-                                <TextBlock Text="Deploy DNS" FontFamily="Arial"/>
-                                <TextBlock Text="OMS LAB Deployment" FontFamily="Arial"/>
-                                <TextBlock Text="CLOUD Linux Test 123" FontFamily="Arial"/>
+                                
                             </ListView>
                         </PivotItem>
 
