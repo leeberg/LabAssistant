@@ -1,4 +1,4 @@
-# LabAssistant
+# Lab Assistant
 This is an applicattion for MMS 2016 session: IT PRO to IT SCIENTIST.
 
 This is a Windows 10 Universal Application designed to load an xml file contining information with Azure Automation webhooks enabled runbooks. 
