@@ -2,9 +2,9 @@
 This is an applicattion for MMS 2016 session: IT PRO to IT SCIENTIST.
 
 ######TODO
-*Add Azure Authenication to Retrieve Runbooks
-*More Attractive UI/UX + COLOR
-*"Refactoring"
+* Add Azure Authenication to Retrieve Runbooks
+* More Attractive UI/UX + COLOR
+* "Refactoring"
   
 
 This is a Windows 10 Universal Application designed to load an xml file contining information with Azure Automation webhooks enabled runbooks. 
