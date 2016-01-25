@@ -3,7 +3,7 @@ This is an applicattion for MMS 2016 session: IT PRO to IT SCIENTIST.
 
 This is a Windows 10 Universal Application designed to load an xml file contining information with Azure Automation webhooks enabled runbooks. 
 
-It is really just a simple app designed to launch Azure Automation Webhooks in an attractive format.
+It is really just a simple app designed to launch Azure Automation Webhooks (or a series of them in order) in an attractive format.
 
 ####Select and Azure Automation Runbook
 ![alt tag](https://raw.githubusercontent.com/bergotronic/LabAssistant/master/ReadMe/LabAssistant1.png)
