@@ -1,5 +1,5 @@
 # Lab Assistant
-This is an applicattion for the MMS 2016 session: IT PRO to IT SCIENTIST.
+This is an app for the MMS 2016 session: IT PRO to IT SCIENTIST.
 
 ######TODO
 * Add Azure Authenication to Retrieve Runbooks
