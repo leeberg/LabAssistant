@@ -1,8 +1,14 @@
 # Lab Assistant
 This is an app for the MMS 2016 session: IT PRO to IT SCIENTIST.
 
+######DONE
+* Change XML to utilize a master "lab assistant" runbook
+* Support for 3 Inputs
+* Support for Various Hybrid Worker Groups or Azure
+
 ######TODO
-* Add Azure Authenication to Retrieve Runbooks
+* Readmeon how to Implement this on your own
+* Add Azure Authenication to Retrieve Runbooks & Information Instead of XML File
 * More Attractive UI/UX + COLOR
 * "Refactoring"
 * "Step builder" for sequencing runbooks?
