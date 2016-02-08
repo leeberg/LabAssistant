@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Experiments>
+  <Experiment>
+    <Name>Hello World Local Version</Name>
+    <Description>Local Version of Hello World - Writes a Text output to your local hybrid runbook worker</Description>
+    <RunbookName>Hello_World_Write-File</RunbookName>
+    <Input1>Text to Write</Input1>
+    <Input2>File to Write</Input2>
+  </Experiment>
+
+
+  <Experiment>
+    <Name>Send an Email</Name>
+    <Description>Sends an email!</Description>
+    <RunbookName>Send-Email</RunbookName>
+    <Input1>To</Input1>
+    <Input2>Subject</Input2>
+    <Input3>Body</Input3>
+  </Experiment>
+
+  <Experiment>
+    <Name>Linux Deployment l</Name>
+    <Description>Uses Vagrant to deploy precise64 machine</Description>
+    <RunbookName>LAB_LinuxDeploy1</RunbookName>
+    <Input1>MachineName</Input1>
+  </Experiment>
+
+
+  <Experiment>
+    <Name>Linux Deployment 2</Name>
+    <Description>Uses Vagrant to deploy precise64 machine with docker</Description>
+    <RunbookName>LAB_LinuxDeploy2</RunbookName>
+    <Input1>MachineName</Input1>
+  </Experiment>
+
+  <Experiment>
+    <Name>Docker Deployment</Name>
+    <Description>Uses SSH to Deploy a Docker Container to a DOcker Linux Host</Description>
+    <RunbookName>LAB_DockerDeploy</RunbookName>
+    <Input1>MachineName</Input1>
+    <Input2>Docker Container</Input2>
+  </Experiment>
+
+  <HybridWorkerGroup>
+    <Name>Azure</Name>
+  </HybridWorkerGroup>
+
+  <HybridWorkerGroup>
+    <Name>BC-HybridWorker1</Name>
+  </HybridWorkerGroup>
+
+  <HybridWorkerGroup>
+    <Name>LEE-NUC1</Name>
+  </HybridWorkerGroup>
+
+  <WebHook>
+    <Name>fafsssssssssssss</Name>
+  </WebHook>
+
+</Experiments>

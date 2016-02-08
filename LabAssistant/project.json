@@ -4,7 +4,13 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.AspNet.WebApi.Client": "5.2.3",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+    "Microsoft.Azure.Management.Automation": "0.50.2-prerelease",
+    "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.212041202-alpha",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.WindowsAzure.Management": "4.1.1",
+    "Microsoft.WindowsAzure.Management.Automation": "1.0.3",
+    "Microsoft.WindowsAzure.Management.Libraries": "2.0.0",
+    "Newtonsoft.Json": "8.0.2"
   },
   "frameworks": {
     "uap10.0": {}

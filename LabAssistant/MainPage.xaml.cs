@@ -1,36 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Media.Imaging;
-
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-
-using System.Text;
-using Windows.Networking.Sockets;
-using Windows.Networking;
 using System.Xml;
-using System.Collections;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 
+
+// NOT FOR UWP :(
+//using System.Security.Cryptography;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -50,11 +33,29 @@ namespace LabAssistant
         public string CurrentWebHook;
         public string CurrentDescription;
 
+        public string CurrentRunbook;
+        public string CurrentHybridGroup;
+
         public string CurrentInput1;
         public string CurrentInput2;
         public string CurrentInput3;
 
+        public string UserInput1;
+        public string UserInput2;
+        public string UserInput3;
+
+
         public Dictionary<string, string> ExperimentDictionary = new Dictionary<string, string>();
+
+        class WebHookInput
+        {
+            public String Input1 { get; set; }
+            public String Input3 { get; set; }
+            public String Input2 { get; set; }
+
+        }
+
+
 
         public MainPage()
         {
@@ -80,7 +81,13 @@ namespace LabAssistant
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    response = await client.PostAsJsonAsync("webhooks?token=" + WebHookToken, "");
+                    
+                    String LabAssitantMainString = CurrentRunbook + ';' + CurrentHybridGroup + ';' + UserInput1 + ';' + UserInput2 + ';' + UserInput3;
+                    Debug.WriteLine("Starting WebHook:");
+                    Debug.WriteLine(WebHookToken);
+                    Debug.WriteLine(LabAssitantMainString);
+
+                    response = await client.PostAsJsonAsync("webhooks?token=" + WebHookToken, LabAssitantMainString);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -92,8 +99,6 @@ namespace LabAssistant
                     {
                         Debug.WriteLine(DateTime.Now + " WebHook Function Failed!");
 
-
-                        ;
                     }
 
                 }
@@ -161,18 +166,24 @@ namespace LabAssistant
         }
 
 
+       
+    
+
+    
 
         private async void Load_Experiments()
         {
             try
-            {   // Open the text file using a stream reader.
+            {
+
+                // Open the text file using a stream reader.
 
 
 
-                Uri LocalExperiments = new Uri("https://github.com/bergotronic/LabAssistant/blob/master/Experiments/Local.txt");
-         
-        
+                /*
+                Uri ExperimentsXML = new Uri("https://raw.githubusercontent.com/bergotronic/LabAssistant/blob/master/Experiments/Local.txt");
                 
+                https://raw.githubusercontent.com/octokit/octokit.rb/master/README.md"
                 //Create an HTTP client object
                 Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
@@ -198,12 +209,12 @@ namespace LabAssistant
                 {
                     httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
                 }
-
+                */
 
 
                 // LOAD THE XML SETTINGS
                 Windows.Storage.StorageFolder appFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                Windows.Storage.StorageFile sampleFile = await appFolder.GetFileAsync("test.xml");
+                Windows.Storage.StorageFile sampleFile = await appFolder.GetFileAsync("Experiments.xml");
 
                 string text = await Windows.Storage.FileIO.ReadTextAsync(sampleFile);
 
@@ -212,41 +223,61 @@ namespace LabAssistant
                 doc.LoadXml(text);
 
 
+
+//                XmlNodeList xnList = doc.DocumentElement.s("/HybridWorkerGroup");
+
+
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
-                    string textd = node.InnerText; //or loop through its children as well
 
-                    String experimentName = node["Name"].InnerText;
-                    String experimentDescription = node["Description"].InnerText;
-                    String experimentWebHook = node["Webhook"].InnerText;
-                    String experimentType = node["Type"].InnerText;
-
-
-                    try
+                    if (node.Name == "HybridWorkerGroup")
                     {
-                        string ExperimentInput1 = node["Input1"].InnerText;
-                        ExperimentDictionary.Add(experimentName + "_Input1", ExperimentInput1);
-
-                        string ExperimentInput2 = node["Input2"].InnerText;
-                        ExperimentDictionary.Add(experimentName + "_Input2", ExperimentInput2);
-
-                        string ExperimentInput3 = node["Input3"].InnerText;
-                        ExperimentDictionary.Add(experimentName + "_Input3", ExperimentInput3);
+                        String HybridWorkerGroupName = node["Name"].InnerText;
+                        Debug.WriteLine("Found Hybrid Runbook Worker " + HybridWorkerGroupName);
+                        HybridWorkerGroupList.Items.Add(HybridWorkerGroupName);
                     }
 
-                    catch
+                    if (node.Name == "WebHook")
                     {
-                        Debug.WriteLine("experiment is missing some inputs");
+                        CurrentWebHook = node["Name"].InnerText;
+
                     }
 
+                    if (node.Name == "Experiment")
+                        {
+                        string textd = node.InnerText; //or loop through its children as well
 
-                    Debug.WriteLine("Name: " + experimentName + "Desc: " + experimentDescription);
-                    //Hello World ExpLocalBLows Up your Datacenterhttp://Webhook.com
-                                       
-                    ActionListBoxRunbook.Items.Add(experimentName);
-                 
-                    ExperimentDictionary.Add(experimentName + "_Description", experimentDescription);
-                    ExperimentDictionary.Add(experimentName + "_WebHook", experimentWebHook);
+                        String experimentName = node["Name"].InnerText;
+                        String experimentDescription = node["Description"].InnerText;
+                        String experimentRunbook = node["RunbookName"].InnerText;
+                       
+                        try
+                        {
+                            string ExperimentInput1 = node["Input1"].InnerText;
+                            ExperimentDictionary.Add(experimentName + "_Input1", ExperimentInput1);
+
+                            string ExperimentInput2 = node["Input2"].InnerText;
+                            ExperimentDictionary.Add(experimentName + "_Input2", ExperimentInput2);
+
+                            string ExperimentInput3 = node["Input3"].InnerText;
+                            ExperimentDictionary.Add(experimentName + "_Input3", ExperimentInput3);
+                        }
+
+                        catch
+                        {
+                            Debug.WriteLine("experiment is missing some inputs");
+                        }
+
+                    
+                        ActionListBoxRunbook.Items.Add(experimentName);
+
+                        ExperimentDictionary.Add(experimentName + "_Description", experimentDescription);
+                        ExperimentDictionary.Add(experimentName + "_RunbookName", experimentRunbook);
+
+
+                    }
+
+                    
 
 
 
@@ -283,6 +314,10 @@ namespace LabAssistant
             TextBoxWebHookInput1.Text = "";
             TextBoxWebHookInput2.Text = "";
             TextBoxWebHookInput3.Text = "";
+            UserInput1 = "";
+            UserInput2 = "";
+            UserInput3 = "";
+
             IMGRunbookOK.Visibility = Visibility.Collapsed;
             IMGRunbookFAIL.Visibility = Visibility.Collapsed;
 
@@ -294,19 +329,15 @@ namespace LabAssistant
                 string SelectedName = ActionListBoxRunbook.SelectedItem.ToString();
                 Debug.WriteLine(SelectedName);
 
-                if (ExperimentDictionary.ContainsKey(SelectedName + "_WebHook"))
+                if (ExperimentDictionary.ContainsKey(SelectedName + "_RunbookName"))
                 {
-                    CurrentWebHook = ExperimentDictionary[SelectedName + "_WebHook"];
-                    Debug.WriteLine(CurrentWebHook);
-
-                    TextBoxWebHookUrl.Text = CurrentWebHook;
+                    CurrentRunbook = ExperimentDictionary[SelectedName + "_RunbookName"];
+                    TextBoxRunbookName.Text = CurrentRunbook;
                 }
 
                 if (ExperimentDictionary.ContainsKey(SelectedName + "_Description"))
                 {
                     CurrentDescription = ExperimentDictionary[SelectedName + "_Description"];
-                    Debug.WriteLine(CurrentWebHook);
-
                     TextBoxDescription.Text = CurrentDescription;
                 }
 
@@ -378,6 +409,21 @@ namespace LabAssistant
         private void ActionListBoxRunbook_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void LabPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            UserInput1 = TextBoxWebHookInput1.Text;
+            UserInput2 = TextBoxWebHookInput2.Text;
+            UserInput3 = TextBoxWebHookInput3.Text;
+
+        }
+
+        private void HybridWorkerGroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CurrentHybridGroup = HybridWorkerGroupList.SelectedItem.ToString();
+            Debug.WriteLine("Current Hybrid Group is: " + CurrentHybridGroup);
         }
     }
 }
