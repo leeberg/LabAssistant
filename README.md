@@ -13,7 +13,7 @@ This is an app for the MMS 2016 session: IT PRO to IT SCIENTIST.
 * "Refactoring"
 * "Step builder" for sequencing runbooks?
   
-This is a Windows 10 Universal Application designed to load an xml file contining information with Azure Automation webhooks you would like to control from you phone. You will define exisiting runbook names and inputs in your own Azure Automation Environment. This app is designed to call "control runbook" using a single Azure Automation Webhook. This control runbook will then launch the other runbooks using the varibles you provided in the phone app.
+This is a Windows 10 Universal Application designed to load an xml file contining information with Azure Automation Runbooks you would like to control from you phone. You will define exisiting runbook names and inputs that you have already created in your own Azure Automation Environment. This app is designed to call "control runbook" using a single Azure Automation Webhook. This control runbook will then launch the other runbooks using the varibles you provided in the phone app.
 
 
 ####Select your xml file defined Azure Automation Runbook
