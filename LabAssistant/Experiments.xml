@@ -8,38 +8,43 @@
     <Input2>File to Write</Input2>
   </Experiment>
 
-
   <Experiment>
-    <Name>Send an Email</Name>
-    <Description>Sends an email!</Description>
-    <RunbookName>Send-Email</RunbookName>
-    <Input1>To</Input1>
-    <Input2>Subject</Input2>
-    <Input3>Body</Input3>
-  </Experiment>
-
-  <Experiment>
-    <Name>Linux Deployment l</Name>
-    <Description>Uses Vagrant to deploy precise64 machine</Description>
+    <Name>LAB_DeployVagrantBox</Name>
+    <Description>Uses Vagrant to deploy a Vagrant Box machine</Description>
     <RunbookName>LAB_LinuxDeploy1</RunbookName>
-    <Input1>MachineName</Input1>
+    <Input1>Box Name</Input1>
+    <Input2>Host Folder Name</Input2>
   </Experiment>
-
 
   <Experiment>
-    <Name>Linux Deployment 2</Name>
-    <Description>Uses Vagrant to deploy precise64 machine with docker</Description>
-    <RunbookName>LAB_LinuxDeploy2</RunbookName>
-    <Input1>MachineName</Input1>
+    <Name>LAB_LabStatus</Name>
+    <Description>Gets Status of all Hyper-V Hosts, and sends an email with status</Description>
+    <RunbookName>LAB_LabStatus</RunbookName>
+    <Input1>Recipient</Input1>
   </Experiment>
+
 
   <Experiment>
     <Name>Docker Deployment</Name>
-    <Description>Uses SSH to Deploy a Docker Container to a DOcker Linux Host</Description>
+    <Description>Uses SSH to Deploy a Docker Container to a Docker Linux Host</Description>
     <RunbookName>LAB_DockerDeploy</RunbookName>
     <Input1>MachineName</Input1>
     <Input2>Docker Container</Input2>
   </Experiment>
+  
+  
+  <Experiment>
+    <Name>LAB_DeployVagrantLab</Name>
+    <Description>Deploys a whole lab!</Description>
+    <RunbookName>LAB_DeployVagrantLab</RunbookName>
+  </Experiment>
+  
+  <Experiment>
+    <Name>LAB_DestroyVagrantLab</Name>
+    <Description>Destroys the lab!</Description>
+    <RunbookName>LAB_DestroyVagrantLab</RunbookName>
+  </Experiment>
+
 
   <HybridWorkerGroup>
     <Name>Azure</Name>
@@ -54,7 +59,7 @@
   </HybridWorkerGroup>
 
   <WebHook>
-    <Name>fafsssssssssssss</Name>
+    <Name></Name>
   </WebHook>
 
 </Experiments>
